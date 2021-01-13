@@ -1,0 +1,345 @@
+{
+	"Unreal Class Actor": {
+		"prefix": "uca",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"CoreMinimal.h\"",
+			"#include \"GameFramework/Actor.h\"",
+			"",
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.generated.h\"",
+			"",
+			"UCLASS()",
+			"class A${TM_FILENAME/([^\\.]+)\\..*/$1/} : public AActor",
+			"{",
+			"\tGENERATED_BODY()",
+			"",
+			"public:",
+			"\t$1",
+			"};"
+		],
+		"description": "Unreal Class Actor"
+	},
+	"Unreal Class Component": {
+		"prefix": "ucc",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"CoreMinimal.h\"",
+			"#include \"Components/ActorComponent.h\"",
+			"",
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.generated.h\"",
+			"",
+			"UCLASS()",
+			"class U${TM_FILENAME/([^\\.]+)\\..*/$1/} : public UActorComponent",
+			"{",
+			"\tGENERATED_BODY()",
+			"",
+			"public:",
+			"\t$1",
+			"};"
+		],
+		"description": "Unreal Class Component"
+	},
+	"Unreal Class Interface": {
+		"prefix": "uci",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"CoreMinimal.h\"",
+			"#include \"UObject/Interface.h\"",
+			"",
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.generated.h\"",
+			"",
+			"UINTERFACE()",
+			"class ${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/\\U$1/}_API U${TM_FILENAME/([^\\.]+)\\..*/$1/} : public UInterface",
+			"{",
+			"\tGENERATED_BODY()",
+			"};",
+			"",
+			"class ${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/\\U$1/}_API I${TM_FILENAME/([^\\.]+)\\..*/$1/}",
+			"{",
+			"\tGENERATED_BODY()",
+			"",
+			"public:",
+			"\t$1",
+			"};"
+		],
+		"description": "Unreal Class Interface"
+	},
+	"Unreal Class Object": {
+		"prefix": "uco",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"CoreMinimal.h\"",
+			"#include \"UObject/Object.h\"",
+			"",
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.generated.h\"",
+			"",
+			"UCLASS()",
+			"class U${TM_FILENAME/([^\\.]+)\\..*/$1/} : public UObject",
+			"{",
+			"\tGENERATED_BODY()",
+			"",
+			"public:",
+			"\t$1",
+			"};"
+		],
+		"description": "Unreal Class Object"
+	},
+	"Unreal Class Statics": {
+		"prefix": "ucs",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"CoreMinimal.h\"",
+			"#include \"Kismet/BlueprintFunctionLibrary.h\"",
+			"",
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.generated.h\"",
+			"",
+			"UCLASS()",
+			"class U${TM_FILENAME/([^\\.]+)\\..*/$1/} : public UBlueprintFunctionLibrary",
+			"{",
+			"\tGENERATED_BODY()",
+			"",
+			"public:",
+			"\t$1",
+			"};"
+		],
+		"description": "Unreal Class Statics"
+	},
+	"Unreal Function Constructor": {
+		"prefix": "ufc",
+		"body": [
+			"${1:_}${TM_FILENAME/([^\\.]+)\\..*/$1/}(const FObjectInitializer& ObjectInitializer);"
+		],
+		"description": "Unreal Function Constructor"
+	},
+	"Unreal Function Interface": {
+		"prefix": "ufi",
+		"body": [
+			"virtual void ${1:SomeFunction}() = 0;"
+		],
+		"description": "Unreal Function Interface"
+	},
+	"Unreal Function Replicated": {
+		"prefix": "ufr",
+		"body": [
+			"void A${TM_FILENAME/([^\\.]+)\\..*/$1/}::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const",
+			"{",
+			"\tSuper::GetLifetimeReplicatedProps(OutLifetimeProps);",
+			"",
+			"\tDOREPLIFETIME(A${TM_FILENAME/([^\\.]+)\\..*/$1/}, ${1:SomeProperty});",
+			"}"
+		],
+		"description": "Unreal Function Replicated"
+	},
+	"Unreal Function Static": {
+		"prefix": "ufs",
+		"body": [
+			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\", meta=(WorldContext=\"WorldContextObject\"))",
+			"static ${2:void} ${1:SomeFunction}(UObject* WorldContextObject);"
+		],
+		"description": "Unreal Function Static"
+	},
+	"Unreal Function": {
+		"prefix": "uff",
+		"body": [
+			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")",
+			"${2:void} ${1:SomeFunction}();"
+		],
+		"description": "Unreal Function"
+	},
+	"Unreal Log Cpp": {
+		"prefix": "ulc",
+		"body": [
+			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")"
+		],
+		"description": "Unreal Log Cpp"
+	},
+	"Unreal Log Fatal": {
+		"prefix": "ulf",
+		"body": [
+			"UE_LOG(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}, Fatal, TEXT(\"${1:Fatal error}\"));"
+		],
+		"description": "Unreal Log Fatal"
+	},
+	"Unreal Log Header": {
+		"prefix": "ulh",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"Logging/LogMacros.h\"",
+			"",
+			"DECLARE_LOG_CATEGORY_EXTERN(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}, All, All);",
+			""
+		],
+		"description": "Unreal Log Header"
+	},
+	"Unreal Log Line": {
+		"prefix": "ull",
+		"body": [
+			"UE_LOG(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}, ${2:Log}, TEXT(\"${1:Hello}\"));"
+		],
+		"description": "Unreal Log Line"
+	},
+	"Unreal Macro Export": {
+		"prefix": "ume",
+		"body": [
+			"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/\\U$1/}_API"
+		],
+		"description": "Unreal Macro Export"
+	},
+	"Unreal Module Build": {
+		"prefix": "umb",
+		"body": [
+			"using UnrealBuildTool;",
+			"",
+			"public class ${TM_FILENAME/([^\\.]+)\\..*/$1/} : ModuleRules",
+			"{",
+			"\tpublic ${TM_FILENAME/([^\\.]+)\\..*/$1/}(ReadOnlyTargetRules Target) : base(Target)",
+			"\t{",
+			"\t\tPCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;",
+			"\t\tbEnforceIWYU = true;",
+			"",
+			"\t\tPublicDependencyModuleNames.AddRange(new string[] { \"Core\", \"CoreUObject\", \"Engine\" });",
+			"\t\tPrivateDependencyModuleNames.AddRange(new string[] { });",
+			"\t}",
+			"}"
+		],
+		"description": "Unreal Module Build"
+	},
+	"Unreal Module Cpp Primary": {
+		"prefix": "umcp",
+		"body": [
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.h\"",
+			"#include \"Modules/ModuleManager.h\"",
+			"",
+			"#include \"Log.h\"",
+			"",
+			"void F${TM_FILENAME/([^\\.]+)\\..*/$1/}::StartupModule()",
+			"{",
+			"\tUE_LOG(Log${TM_FILENAME/([^\\.]+)\\..*/$1/}, Log, TEXT(\"${TM_FILENAME/([^\\.]+)\\..*/$1/} module starting up\"));",
+			"}",
+			"",
+			"void F${TM_FILENAME/([^\\.]+)\\..*/$1/}::ShutdownModule()",
+			"{",
+			"\tUE_LOG(Log${TM_FILENAME/([^\\.]+)\\..*/$1/}, Log, TEXT(\"${TM_FILENAME/([^\\.]+)\\..*/$1/} module shutting down\"));",
+			"}",
+			"",
+			"IMPLEMENT_PRIMARY_GAME_MODULE(F${TM_FILENAME/([^\\.]+)\\..*/$1/}, ${TM_FILENAME/([^\\.]+)\\..*/$1/}, \"${TM_FILENAME/([^\\.]+)\\..*/$1/}\");",
+			""
+		],
+		"description": "Unreal Module Cpp Primary"
+	},
+	"Unreal Module Cpp": {
+		"prefix": "umc",
+		"body": [
+			"#include \"${TM_FILENAME/([^\\.]+)\\..*/$1/}.h\"",
+			"#include \"Modules/ModuleManager.h\"",
+			"",
+			"#include \"Log.h\"",
+			"",
+			"void F${TM_FILENAME/([^\\.]+)\\..*/$1/}::StartupModule()",
+			"{",
+			"\tUE_LOG(Log${TM_FILENAME/([^\\.]+)\\..*/$1/}, Log, TEXT(\"${TM_FILENAME/([^\\.]+)\\..*/$1/} module starting up\"));",
+			"}",
+			"",
+			"void F${TM_FILENAME/([^\\.]+)\\..*/$1/}::ShutdownModule()",
+			"{",
+			"\tUE_LOG(Log${TM_FILENAME/([^\\.]+)\\..*/$1/}, Log, TEXT(\"${TM_FILENAME/([^\\.]+)\\..*/$1/} module shutting down\"));",
+			"}",
+			"",
+			"IMPLEMENT_GAME_MODULE(F${TM_FILENAME/([^\\.]+)\\..*/$1/}, ${TM_FILENAME/([^\\.]+)\\..*/$1/});"
+		],
+		"description": "Unreal Module Cpp"
+	},
+	"Unreal Module Header": {
+		"prefix": "umh",
+		"body": [
+			"#pragma once",
+			"",
+			"#include \"CoreMinimal.h\"",
+			"#include \"Modules/ModuleInterface.h\"",
+			"",
+			"class F${TM_FILENAME/([^\\.]+)\\..*/$1/} : public IModuleInterface",
+			"{",
+			"public:",
+			"\tstatic inline F${TM_FILENAME/([^\\.]+)\\..*/$1/}& Get()",
+			"\t{",
+			"\t\treturn FModuleManager::LoadModuleChecked<F${TM_FILENAME/([^\\.]+)\\..*/$1/}>(\"${TM_FILENAME/([^\\.]+)\\..*/$1/}\");",
+			"\t}",
+			"",
+			"\tstatic inline bool IsAvailable()",
+			"\t{",
+			"\t\treturn FModuleManager::Get().IsModuleLoaded(\"${TM_FILENAME/([^\\.]+)\\..*/$1/}\");",
+			"\t}",
+			"",
+			"\tvirtual void StartupModule() override;",
+			"\tvirtual void ShutdownModule() override;",
+			"};"
+		],
+		"description": "Unreal Module Header"
+	},
+	"Unreal Module Target": {
+		"prefix": "umt",
+		"body": [
+			"using UnrealBuildTool;",
+			"",
+			"public class ${TM_FILENAME/([^\\.]+)\\..*/$1/}Target : TargetRules",
+			"{",
+			"\tpublic ${TM_FILENAME/([^\\.]+)\\..*/$1/}Target(TargetInfo Target) : base(Target)",
+			"\t{",
+			"\t\tType = TargetType.Game;",
+			"\t\tDefaultBuildSettings = BuildSettingsVersion.V2;",
+			"\t\tExtraModuleNames.AddRange( new string[] { \"$1\" } );",
+			"\t}",
+			"}"
+		],
+		"description": "Unreal Module Target"
+	},
+	"Unreal Property Component": {
+		"prefix": "upc",
+		"body": [
+			"UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=\"Components\")",
+			"${2:class USceneComponent*} ${1:SomeComponent};"
+		],
+		"description": "Unreal Property Component"
+	},
+	"Unreal Property Editable": {
+		"prefix": "upe",
+		"body": [
+			"UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")",
+			"${2:int32} ${1:SomeProperty};"
+		],
+		"description": "Unreal Property Editable"
+	},
+	"Unreal Property Visible": {
+		"prefix": "upv",
+		"body": [
+			"UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")",
+			"${2:int32} ${1:SomeProperty};"
+		],
+		"description": "Unreal Property Visible"
+	},
+	"Unreal Uproject": {
+		"prefix": "uuproj",
+		"body": [
+			"{",
+			"\t\"FileVersion\": 3,",
+			"\t\"EngineAssociation\": \"${2:4.25}\",",
+			"\t\"Category\": \"\",",
+			"\t\"Description\": \"\",",
+			"\t\"Modules\": [",
+			"\t\t{",
+			"\t\t\t\"Name\": \"$1\",",
+			"\t\t\t\"Type\": \"Runtime\",",
+			"\t\t\t\"LoadingPhase\": \"Default\"",
+			"\t\t}",
+			"\t]",
+			"}"
+		],
+		"description": "Unreal Uproject"
+	}
+}
