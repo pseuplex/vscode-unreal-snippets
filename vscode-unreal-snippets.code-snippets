@@ -154,10 +154,13 @@
 	"Unreal Log Cpp": {
 		"prefix": "ulc",
 		"body": [
-			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")"
+		  "#include \"Log.h\"",
+		  "",
+		  "DEFINE_LOG_CATEGORY(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/});",
+		  ""
 		],
 		"description": "Unreal Log Cpp"
-	},
+	  },
 	"Unreal Log Fatal": {
 		"prefix": "ulf",
 		"body": [
