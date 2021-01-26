@@ -138,7 +138,7 @@
 	"Unreal Function Static": {
 		"prefix": "ufs",
 		"body": [
-			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\", meta=(WorldContext=\"WorldContextObject\"))",
+			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}\", meta=(WorldContext=\"WorldContextObject\"))",
 			"static ${2:void} ${1:SomeFunction}(UObject* WorldContextObject);"
 		],
 		"description": "Unreal Function Static"
@@ -146,7 +146,7 @@
 	"Unreal Function": {
 		"prefix": "uff",
 		"body": [
-			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")",
+			"UFUNCTION(BlueprintCallable, Category=\"${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}\")",
 			"${2:void} ${1:SomeFunction}();"
 		],
 		"description": "Unreal Function"
@@ -156,7 +156,7 @@
 		"body": [
 		  "#include \"Log.h\"",
 		  "",
-		  "DEFINE_LOG_CATEGORY(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/});",
+		  "DEFINE_LOG_CATEGORY(Log${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/});",
 		  ""
 		],
 		"description": "Unreal Log Cpp"
@@ -164,7 +164,7 @@
 	"Unreal Log Fatal": {
 		"prefix": "ulf",
 		"body": [
-			"UE_LOG(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}, Fatal, TEXT(\"${1:Fatal error}\"));"
+			"UE_LOG(Log${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}, Fatal, TEXT(\"${1:Fatal error}\"));"
 		],
 		"description": "Unreal Log Fatal"
 	},
@@ -175,7 +175,7 @@
 			"",
 			"#include \"Logging/LogMacros.h\"",
 			"",
-			"DECLARE_LOG_CATEGORY_EXTERN(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}, All, All);",
+			"DECLARE_LOG_CATEGORY_EXTERN(Log${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}, All, All);",
 			""
 		],
 		"description": "Unreal Log Header"
@@ -183,7 +183,7 @@
 	"Unreal Log Line": {
 		"prefix": "ull",
 		"body": [
-			"UE_LOG(Log${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}, ${2:Log}, TEXT(\"${1:Hello}\"));"
+			"UE_LOG(Log${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}, Log, TEXT(\"Hello\");"
 		],
 		"description": "Unreal Log Line"
 	},
@@ -313,7 +313,7 @@
 	"Unreal Property Editable": {
 		"prefix": "upe",
 		"body": [
-			"UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")",
+			"UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=\"${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}\")",
 			"${2:int32} ${1:SomeProperty};"
 		],
 		"description": "Unreal Property Editable"
@@ -321,7 +321,7 @@
 	"Unreal Property Visible": {
 		"prefix": "upv",
 		"body": [
-			"UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=\"${TM_FILEPATH/.*\\/Source\\/(.*)\\/(?:Private|Public)\\/.*/$1/}\")",
+			"UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=\"${TM_FILEPATH/.*Source[\\\\\\/]([^\\\\/]+)[\\\\\\/](?:Private|Public).*/$1/}\")",
 			"${2:int32} ${1:SomeProperty};"
 		],
 		"description": "Unreal Property Visible"
